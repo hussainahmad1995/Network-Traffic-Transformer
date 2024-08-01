@@ -1,5 +1,6 @@
 # Orignal author: Siddhant Ray
 
+import wandb
 import argparse
 import copy
 import json
@@ -42,6 +43,8 @@ from utils import (
     vectorize_features_to_numpy,
     vectorize_features_to_numpy_memento,
 )
+
+wandb.login()
 
 random.seed(0)
 np.random.seed(0)
@@ -655,7 +658,8 @@ class TransformerEncoder(pl.LightningModule):
         )
 
 
-# Argument parser for the model and return
+# Argument parser for the model and return(the following)
+#TODO - the following is the argument parser - not important for the code.
 def get_args():
     # Hyper parameters from config file
     with open("configs/config-encoder-test.yaml") as f:
@@ -929,14 +933,12 @@ def main():
         mean_delay = pickle.load(open("../results/mean_iat.pkl", "rb"))
         std_delay = pickle.load(open("../results/std_iat.pkl", "rb"))
     else:
-        ## Get the data
-        (
-            full_feature_arr,
-            full_target_arr,
-            mean_delay,
-            std_delay,
-            all_values,
-        ) = generate_sliding_windows(
+        # Get the data
+        (full_feature_arr,
+        full_target_arr,
+        mean_delay,
+        std_delay,
+        all_values)= generate_sliding_windows(
             args.sliding_window_size,
             args.window_batch_size,
             num_features,
@@ -950,6 +952,13 @@ def main():
             RTT_LABEL=False,
             RTT_WIFI_NETWORK=False,
         )
+
+    #no string
+    print("Full feature array \n" + str(full_feature_arr[:1]))
+    print("Full target array  \n" + str(full_target_arr[:1]))
+    print("The mean delay is \n" + str(mean_delay))
+    print("The standard deviation delay" + str(std_delay))
+    print("The standard deviation for all values is" + str(all_values))
 
     ## Model definition with delay scaling params
     model = TransformerEncoder(
@@ -1038,6 +1047,7 @@ def main():
     # Save path as per single or dual loss
     # Make new dir for storing logs
     if DUAL_LOSS:
+        print("Dual Loss is true")
         os.system("mkdir -p encoder_delay_logs_dualloss/")
         save_path = "encoder_delay_logs_dualloss/"
     else:
@@ -1068,10 +1078,11 @@ def main():
 
     if TRAIN:
         # Load checkpoint if exists
+        print("The save path is " +  str(save_path))
+        print("The sliding window size is " + str(SLIDING_WINDOW_SIZE))
         if os.path.exists(
             "{}/iat_pred_nonpretrained_window{}.ckpt".format(
-                save_path, SLIDING_WINDOW_SIZE
-            )
+                save_path, SLIDING_WINDOW_SIZE)
         ):
             print("Loading checkpoint")
             cpath = "{}/iat_pred_nonpretrained_window{}.ckpt".format(
