@@ -27,9 +27,10 @@ def extract_protocol(text):
 def rename_flowid(input_text):
     return input_text
 
-
+#the senders are 
 def generate_senders_csv(path, n_senders):
-    print("The current path is " + str(path) + " the number of senders are " + str(n_senders))
+    print("\n generate function - current path is " + str(path) + " | number of senders are " + str(n_senders))
+
     path = path
     num_senders = n_senders
     sender_num = 0
@@ -104,8 +105,9 @@ def generate_senders_csv(path, n_senders):
         "Message ID",
     ]
 
+    #Intiailize an empty data frame with specified columns 
     temp = pd.DataFrame(columns=temp_cols)
-    print(temp.head())
+    print("This is the temp head " + temp.head())
 
     # files = ["topo_1.csv", "topo_2.csv", "topo_test_1.csv", "topo_test_2.csv"]
     # files = ["topo_more_data_1.csv", "topo_more_data_2.csv", "topo_more_data_3.csv",
@@ -151,7 +153,7 @@ def generate_senders_csv(path, n_senders):
     files = ["small_test_one_disturbance_with_message_ids1.csv"]
 
     for file in files:
-        print("The output of a file " + file)
+        print("\n The output of a file " + file)
 
         sender_tx_df = pd.read_csv(path + file)
         sender_tx_df = pd.DataFrame(np.vstack([sender_tx_df.columns, sender_tx_df]))
@@ -202,9 +204,10 @@ def generate_senders_csv(path, n_senders):
         sender_tx_df.to_csv(path + save_name, index=False)
 
     # temp.drop(['Extra'],axis = 1, inplace=True)
-    print(temp.head())
-    print(temp.columns)
-    print(temp.shape)
+    print("The head of the dataframe : \n" + str(temp.head()))
+    print("The tail of the dataframe : \n" + str(temp.tail()))
+    print("The columns of the dataframe : \n " + str(temp.columns))
+    print("The dimensions of the dataframe : \n " + str(temp.shape))
 
     return temp
 
@@ -224,7 +227,7 @@ def main():
         required=False,
     )
     args = parser.parse_args()
-    print(args)
+    print("These are the arguments for csv_helper_memento " + str(args))
 
     if args.model == "memento":
         path = "results/"
@@ -232,6 +235,7 @@ def main():
     else:
         pass
 
+    #the default 
     n_senders = 1
     sender_csv = generate_senders_csv(path, n_senders)
 
