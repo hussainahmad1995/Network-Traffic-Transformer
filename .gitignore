@@ -203,3 +203,5 @@ workspace/TransformerModels/plots
 figures_test/
 # report/thesis.pdf
 
+
+.python-version
