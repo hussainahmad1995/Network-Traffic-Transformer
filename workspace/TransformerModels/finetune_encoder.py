@@ -524,7 +524,9 @@ def main():
         num_features,
         TEST_ONLY_NEW,
         NUM_BOTTLENECKS,
+        reduce_type=True
     )
+
     if PRETRAINED:
         ## Model definition with delay scaling params (from pretrained model)
         cpath = "checkpoints/finetune_nonpretrained_window{}.ckpt".format(

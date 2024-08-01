@@ -57,18 +57,15 @@ def generate_sliding_windows(
     RTT_WIFI_NETWORK=RTT_WIFI_NETWORK,
 ):
 
-print(f"SLIDING_WINDOW_SIZE: {SLIDING_WINDOW_SIZE}\n"
-      f"WINDOW_BATCH_SIZE: {WINDOW_BATCH_SIZE}\n"
-      f"num_features: {num_features}\n"
-      f"TEST_ONLY_NEW: {TEST_ONLY_NEW}\n"
-      f"NUM_BOTTLENECKS: {NUM_BOTTLENECKS}\n"
-      f"reduce_type: {reduce_type}\n"
-      f"MEMENTO: {MEMENTO}\n"
-      f"IAT_LABEL: {IAT_LABEL}\n"
-      f"DATACENTER_BURSTS: {DATACENTER_BURSTS}\n"
-      f"LAPTOP_ON_WIFI: {LAPTOP_ON_WIFI}\n"
-      f"RTT_LABEL: {RTT_LABEL}\n"
-      f"RTT_WIFI_NETWORK: {RTT_WIFI_NETWORK}")
+    print("\nGenerate sliding window function")
+    print(f"SLIDING_WINDOW_SIZE, {SLIDING_WINDOW_SIZE}")
+    print(f"WINDOW_BATCH_SIZE, {WINDOW_BATCH_SIZE}")
+    print(f"num_features, {num_features}")
+    print(f"TEST_ONLY_NEW, {TEST_ONLY_NEW}")
+    print(f"NUM_BOTTLENECKS, {NUM_BOTTLENECKS}")
+    print(f"reduce_type, {reduce_type}")
+    print(f"MEMENTO= {MEMENTO}")
+ 
 
     sl_win_start = SLIDING_WINDOW_START
     sl_win_size = SLIDING_WINDOW_SIZE
@@ -107,46 +104,47 @@ print(f"SLIDING_WINDOW_SIZE: {SLIDING_WINDOW_SIZE}\n"
                     "small_test_no_disturbance10_final.csv",
                 ]"""
 
-                files = [
-                    "small_test_no_disturbance_with_message_ids1_final.csv",
-                    # "small_test_no_disturbance_with_message_ids2_final.csv",
-                    # "small_test_no_disturbance_with_message_ids3_final.csv",
-                    # "small_test_no_disturbance_with_message_ids4_final.csv",
-                    # "small_test_no_disturbance_with_message_ids5_final.csv",
-                    # "small_test_one_disturbance_with_message_ids1_final.csv",
-                    # "small_test_one_disturbance_with_message_ids2_final.csv",
-                    # "small_test_one_disturbance_with_message_ids3_final.csv",
-                    # "small_test_one_disturbance_with_message_ids4_final.csv",
-                    # "small_test_one_disturbance_with_message_ids5_final.csv",
-                ]
+                # files = [
+                #     "small_test_no_disturbance_with_message_ids1_final.csv",
+                #     # "small_test_no_disturbance_with_message_ids2_final.csv",
+                #     # "small_test_no_disturbance_with_message_ids3_final.csv",
+                #     # "small_test_no_disturbance_with_message_ids4_final.csv",
+                #     # "small_test_no_disturbance_with_message_ids5_final.csv",
+                #     # "small_test_one_disturbance_with_message_ids1_final.csv",
+                #     # "small_test_one_disturbance_with_message_ids2_final.csv",
+                #     # "small_test_one_disturbance_with_message_ids3_final.csv",
+                #     # "small_test_one_disturbance_with_message_ids4_final.csv",
+                #     # "small_test_one_disturbance_with_message_ids5_final.csv",
+                # ]
 
-            elif NUM_BOTTLENECKS == 2:
-                files = [
-                    "small_test_one_disturbance_with_message_ids1_final.csv",
-                    "small_test_one_disturbance_with_message_ids2_final.csv",
-                    "small_test_one_disturbance_with_message_ids3_final.csv",
-                    "small_test_one_disturbance_with_message_ids4_final.csv",
-                    "small_test_one_disturbance_with_message_ids5_final.csv",
-                    "small_test_one_disturbance_with_message_ids6_final.csv",
-                    "small_test_one_disturbance_with_message_ids7_final.csv",
-                    "small_test_one_disturbance_with_message_ids8_final.csv",
-                    "small_test_one_disturbance_with_message_ids9_final.csv",
-                    "small_test_one_disturbance_with_message_ids10_final.csv",
-                ]
-            elif NUM_BOTTLENECKS == 4:  # Big topology
-                # files = ["large_test_disturbance_with_message_ids1_final.csv"]
-                files = [
-                    "large_test_disturbance_with_message_ids1_final.csv",
-                    "large_test_disturbance_with_message_ids2_final.csv",
-                    "large_test_disturbance_with_message_ids3_final.csv",
-                    "large_test_disturbance_with_message_ids4_final.csv",
-                    "large_test_disturbance_with_message_ids5_final.csv",
-                    # "large_test_disturbance_with_message_ids6_final.csv",
-                    # "large_test_disturbance_with_message_ids7_final.csv",
-                    # "large_test_disturbance_with_message_ids8_final.csv",
-                    # "large_test_disturbance_with_message_ids9_final.csv",
-                    # "large_test_disturbance_with_message_ids10_final.csv",
-                ]
+            # elif NUM_BOTTLENECKS == 2:
+            #     print('elif block of 2 bottlenecks must be evaluated')
+            #     files = [
+            #         "small_test_one_disturbance_with_message_ids1_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids2_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids3_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids4_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids5_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids6_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids7_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids8_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids9_final.csv",
+            #         # "small_test_one_disturbance_with_message_ids10_final.csv",
+            #     ]
+            # elif NUM_BOTTLENECKS == 4:  # Big topology
+            #     # files = ["large_test_disturbance_with_message_ids1_final.csv"]
+            #     files = [
+            #         "large_test_disturbance_with_message_ids1_final.csv",
+            #         "large_test_disturbance_with_message_ids2_final.csv",
+            #         "large_test_disturbance_with_message_ids3_final.csv",
+            #         "large_test_disturbance_with_message_ids4_final.csv",
+            #         "large_test_disturbance_with_message_ids5_final.csv",
+            #         # "large_test_disturbance_with_message_ids6_final.csv",
+            #         # "large_test_disturbance_with_message_ids7_final.csv",
+            #         # "large_test_disturbance_with_message_ids8_final.csv",
+            #         # "large_test_disturbance_with_message_ids9_final.csv",
+            #         # "large_test_disturbance_with_message_ids10_final.csv",
+            #     ]
             else:
                 print("Invalid number of bottlenecks")
                 exit()
@@ -198,14 +196,25 @@ print(f"SLIDING_WINDOW_SIZE: {SLIDING_WINDOW_SIZE}\n"
         else:
             global_df = pd.DataFrame(["Timestamp", "Packet Size", "Delay"])
         for file in files:
-            file_df = pd.read_csv(path + file)
-            if IAT_LABEL:
-                file_df = file_df[["Timestamp", "Packet Size", "Delay", "IAT"]]
-            else:
-                file_df = file_df[["Timestamp", "Packet Size", "Delay"]]
-            global_df = pd.concat([global_df, file_df], ignore_index=True)
+            #check if the path exists or not
+            if os.path.exists(path + file):
+                print('The path exists' + path + file)
+                #read the csv file - in our case 
+                file_df = pd.read_csv(path + file)
+                print(f"Print the head of {file} : dataframe ")
+                print(file_df.head())
+                if IAT_LABEL:
+                    file_df = file_df[["Timestamp", "Packet Size", "Delay", "IAT"]]
+                else:
+                    file_df = file_df[["Timestamp", "Packet Size", "Delay"]]
 
-        print(global_df.shape)
+                #appends the global_dataframe into file_dataframe
+                global_df = pd.concat([global_df, file_df], ignore_index=True)
+            else:
+                print("Path does not exist : " + str(path) + str(file))
+
+        print("\n The global df head")
+        print(global_df.head())
         mean_delay = global_df["Delay"].mean()
         std_delay = global_df["Delay"].std()
         mean_size = global_df["Packet Size"].mean()
