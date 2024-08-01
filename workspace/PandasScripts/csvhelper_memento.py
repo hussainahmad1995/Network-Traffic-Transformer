@@ -150,7 +150,7 @@ def generate_senders_csv(path, n_senders):
     # ]
     # files = ["memento_test10.csv", "memento_test20.csv", "memento_test25.csv"]
 
-    files = ["small_test_one_disturbance_with_message_ids1.csv"]
+    files = ["small_test_no_disturbance_with_message_ids1.csv"]
 
     for file in files:
         print("\n The output of a file " + file)
